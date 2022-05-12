@@ -1,0 +1,54 @@
+{
+    "meshConfig": {
+        "sources": [
+            {
+                "name": "Commerce",
+                "handler": {
+                    "graphql": {
+                        "endpoint": "https://venia.magento.com/graphql/"
+                    }
+                }
+            },
+            {
+                "name": "AEM",
+                "handler": {
+                    "graphql": {
+                        "endpoint": "https://publish-p31258-e454195.adobeaemcloud.com/content/_cq_graphql/global/endpoint.json",
+                        "schemaHeaders": {
+                            "Authorization": "Basic YWRtaW46YWRtaW4="  
+                        },
+                        "operationHeaders": {
+                            "Authorization": "Basic YWRtaW46YWRtaW4="
+                        }
+                    }
+                }
+            },
+            {   
+                "name": "Countries",
+                "handler": {
+                    "graphql": {
+                        "endpoint": "https://countries.trevorblades.com/"
+                    }
+                },
+                "transforms": [
+                    {
+                        "rename": {
+                                "renames": [
+                                    {
+                                        "from": {
+                                            "type": "Query",
+                                            "field": "country"
+                                        },
+                                        "to": {
+                                            "type": "Query",
+                                            "field": "countryv2"
+                                        }
+                                    }
+                                ]
+                            }
+                    }
+                ]
+            }
+        ]
+    }
+}
